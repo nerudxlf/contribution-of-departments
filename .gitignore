@@ -1,0 +1,6 @@
+__pycharm__
+.idea
+venv
+*.xlsx
+*.csv
+*.xls
