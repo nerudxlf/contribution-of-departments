@@ -29,28 +29,6 @@ class DataCalculation:
                     result_dict |= {department_list[i]: {names_list[i]: proportion_list[i]}}
         return result_dict
 
-    def get_value_kbpr(self):
-        name_list = self.employees["ФИО"].to_list()
-        return len(set(name_list))
-
     def count_values(self):
-        employees_dict = self.get_employees_dict()
-        for authors in self.data_df["Авторы"].to_list():
-            for i in authors.split(", "):
-                name = self.find_in_dictionary(i)
-                if not name:
-                    break
-                for keys, values in employees_dict.items():
-                    if values.get(name):
-                        if self.department_values.get(keys):
-                            self.department_values[keys] += values[name]
-                        else:
-                            self.department_values |= {keys: values[name]}
-        return self.department_values
+        pass
 
-    def count_proportion(self):
-        kbpr_value = self.get_value_kbpr()
-        return_result = self.department_values
-        for keys, values in return_result.items():
-            return_result[keys] = round(values, 2) / kbpr_value
-        return return_result
