@@ -17,5 +17,4 @@ class DataCalculationScopus(DataCalculation):
                             self.department_values[keys] += values[name]
                         else:
                             self.department_values |= {keys: values[name]}
-        print(set(data_set))
         return self.department_values

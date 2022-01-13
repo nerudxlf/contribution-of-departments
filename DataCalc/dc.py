@@ -16,6 +16,24 @@ class DataCalculation:
         else:
             return None
 
+    @staticmethod
+    def __get_sum_dict_npr(dictionary: dict) -> dict:
+        tmp_dict = {}
+        for values in dictionary.values():
+            for keys_v, values_v in values.items():
+                if tmp_dict.get(keys_v):
+                    tmp_dict[keys_v] += values_v
+                else:
+                    tmp_dict |= {keys_v: values_v}
+        return tmp_dict
+
+    @staticmethod
+    def __get_current_value_proportion_npr(dictionary_tmp: dict, current_dict: dict) -> dict:
+        for keys, values in current_dict.items():
+            for keys_v, values_v in values.items():
+                current_dict[keys][keys_v] = values_v / dictionary_tmp[keys_v]
+        return current_dict
+
     def get_employees_dict(self) -> dict:
         department_list = self.employees["Подразделение"].to_list()
         names_list = self.employees["ФИО"].to_list()
@@ -27,7 +45,9 @@ class DataCalculation:
                     result_dict[department_list[i]] |= {names_list[i]: proportion_list[i]}
                 else:
                     result_dict |= {department_list[i]: {names_list[i]: proportion_list[i]}}
-        return result_dict
+        tmp_dict = self.__get_sum_dict_npr(result_dict)
+        return_dict = self.__get_current_value_proportion_npr(tmp_dict, result_dict)
+        return return_dict
 
     def count_values(self):
         pass
