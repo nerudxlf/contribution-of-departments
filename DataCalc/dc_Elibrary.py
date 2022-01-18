@@ -15,8 +15,7 @@ class DataCalculationElibrary(DataCalculation):
                     return f"{name_list[0]} {name_list[1][0]}."
                 elif len(name_list) == 3:
                     return f"{name_list[0]} {name_list[1][0]}.{name_list[2][0]}."
-            else:
-                return None
+            return None
 
     def get_employees_dict(self):
         department_list = self.employees["Подразделение"].to_list()

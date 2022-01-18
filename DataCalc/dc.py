@@ -60,8 +60,8 @@ class DataCalculation:
                     result_dict[department_list[i]] |= {names_list[i]: proportion_list[i]}
                 else:
                     result_dict |= {department_list[i]: {names_list[i]: proportion_list[i]}}
-        tmp_dict = self.__get_sum_dict_npr(result_dict)
-        return_dict = self.__get_current_value_proportion_npr(tmp_dict, result_dict)
+        tmp_dict = self._get_sum_dict_npr(result_dict)
+        return_dict = self._get_current_value_proportion_npr(tmp_dict, result_dict)
         return return_dict
 
     def count_values(self):
