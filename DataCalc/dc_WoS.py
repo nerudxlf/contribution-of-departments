@@ -8,7 +8,6 @@ class DataCalculationWoS(DataCalculation):
             for i in authors.split("; "):
                 name = self.find_in_dictionary(i)
                 if not name:
-                    print(i)
                     break
                 for keys, values in employees_dict.items():
                     if values.get(name):
